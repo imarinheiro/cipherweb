@@ -1,0 +1,22 @@
+{% load tags %}
+<div class="ui one column grid">
+    <div class="centered column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+            <tr class="center aligned">
+                <th colspan="2">Estado Inicial</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="center aligned">
+                <td data-label="linha00">{{ state.0 }}</td>
+                <td data-label="linha01">{{ state.1 }}</td>
+            </tr>
+            <tr class="center aligned">
+                <td data-label="linha10">{{ state.2 }}</td>
+                <td data-label="linha11">{{ state.3 }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

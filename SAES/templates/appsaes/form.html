@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="ui three column centered grid">
+        <div class="column">
+            <h2 class="ui header center aligned">
+                {% if request.path == '/decrypt/' %}
+                    Descriptografar
+                {% else %}
+                    Criptografar
+                {% endif %}
+            </h2>
+            <div class="ui black segment">
+                <form class="ui form" action="" method="post">
+                    {% csrf_token %}
+                    {% include 'appsaes/fields_errors.html' %}
+                    <div class="field required">
+                        <label for="text_id">Texto</label>
+                        <input id="text_id" type="text" name="text" placeholder="Texto"
+                               pattern="[0-9]{0,36}"
+                               title="No máximo 36 caracteres de 0-9">
+                    </div>
+                    <div class="field required">
+                        <label for="key_id">Chave</label>
+                        <input id="key_id" type="text" name="key" placeholder="Chave"
+                               pattern="[0-65535]{0,5}"
+                               title="Número inteiro de 0-65535">
+                    </div>
+                    <div class="field">
+                        <button class="ui black basic button" type="submit">
+                            {% if request.path == '/decrypt/' %}
+                                Descriptografar
+                            {% else %}
+                                Criptografar
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

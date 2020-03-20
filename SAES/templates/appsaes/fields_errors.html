@@ -1,0 +1,21 @@
+{% load tags %}
+{% if form.errors %}
+    <div class="ui negative  message">
+        <i class="close icon"></i>
+        <div class="header">
+            Verifique os campos abaixo
+        </div>
+        <ul class="ui list">
+            {% for name, errors in form.errors.items %}
+                <li class="item">
+                    <div class="ui tiny header">{% name_to_label form name %}:</div>
+                    <ul class="ui list">
+                        {% for error in errors %}
+                            <li value="*" class="item">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

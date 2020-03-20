@@ -1,0 +1,69 @@
+{% load tags %}
+{% load static %}
+<div class="ui five column grid row middle aligned">
+    <div class="column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+                <tr class="center aligned">
+                    <th colspan="2">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="center aligned">
+                    <td data-label="linha00">{{ states.0.0 }}</td>
+                    <td data-label="linha01">{{ states.0.1 }}</td>
+                </tr>
+                <tr class="center aligned">
+                    <td data-label="linha10">{{ states.0.2 }}</td>
+                    <td data-label="linha11">{{ states.0.3 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="column">
+        <img class="ui centered image tiny operator" src='{% static "img/multiply.svg" %}'
+             alt="operator"/>
+    </div>
+    <div class="column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+                <tr class="center aligned">
+                    <th colspan="2">Matriz da Transformação Inversa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="center aligned">
+                    <td data-label="linha00">1001</td>
+                    <td data-label="linha01">0010</td>
+                </tr>
+                <tr class="center aligned">
+                    <td data-label="linha10">0010</td>
+                    <td data-label="linha11">1001</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="column">
+        <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}'
+             alt="operator"/>
+    </div>
+    <div class="column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+                <tr class="center aligned">
+                    <th colspan="2">Estado Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="center aligned">
+                    <td data-label="linha00">{{ states.1.0 }}</td>
+                    <td data-label="linha01">{{ states.1.1 }}</td>
+                </tr>
+                <tr class="center aligned">
+                    <td data-label="linha10">{{ states.1.2 }}</td>
+                    <td data-label="linha11">{{ states.1.3 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

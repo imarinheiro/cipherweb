@@ -1,0 +1,70 @@
+{% load tags %}
+<div id="js-round-2">
+    <h4 class="ui header">Segunda Rodada</h4>
+    <div class="ui pointing secondary menu stackable">
+        <a class="item active" data-tab="round_1_sub">Substituição de Nibbles</a>
+        <a class="item" data-tab="round_1_shift">Deslocamento de Linhas</a>
+        <a class="item" data-tab="round_1_mix">Embaralhamento de Colunas </a>
+        <a class="item" data-tab="round_1_add">Adição da chave de Rodada</a>
+    </div>
+    <div class="ui tab segment active" data-tab="round_1_sub">
+        {% tuple_before_after round_1.substitute_nibble as list %}
+        <div class="ui top attached tabular menu stackable">
+            {% for state in list %}
+                <a class="item{% if forloop.first %} active {% endif %}"
+                   data-tab="round_1_sub/{{ forloop.counter }}">Bloco {{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
+        {% for states in list %}
+            <div class="ui bottom attached tab segment{% if forloop.first %} active {% endif %}"
+                 data-tab="round_1_sub/{{ forloop.counter }}">
+                {% include 'appsaes/states/state_sub.html' %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="ui tab segment" data-tab="round_1_add">
+        {% tuple_before_after round_1.add_round_key as list %}
+        <div class="ui top attached tabular menu stackable">
+            {% for state in list %}
+                <a class="item{% if forloop.first %} active {% endif %}"
+                   data-tab="round_1_add/{{ forloop.counter }}">Bloco {{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
+        {% for states in list %}
+            <div class="ui bottom attached tab segment{% if forloop.first %} active {% endif %}"
+                 data-tab="round_1_add/{{ forloop.counter }}">
+                {% include 'appsaes/states/state_add.html' %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="ui tab segment" data-tab="round_1_shift">
+        {% tuple_before_after round_1.shift_row as list %}
+        <div class="ui top attached tabular menu stackable">
+            {% for state in list %}
+                <a class="item{% if forloop.first %} active {% endif %}"
+                   data-tab="round_1_shift/{{ forloop.counter }}">Bloco {{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
+        {% for states in list %}
+            <div class="ui bottom attached tab segment{% if forloop.first %} active {% endif %}"
+                 data-tab="round_1_shift/{{ forloop.counter }}">
+                {% include 'appsaes/states/state_shift.html' %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="ui tab segment" data-tab="round_1_mix">
+        {% tuple_before_after round_1.mix_column as list %}
+        <div class="ui top attached tabular menu stackable">
+            {% for state in list %}
+                <a class="item{% if forloop.first %} active {% endif %}"
+                   data-tab="round_1_mix/{{ forloop.counter }}">Bloco {{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
+        {% for states in list %}
+            <div class="ui bottom attached tab segment{% if forloop.first %} active {% endif %}"
+                 data-tab="round_1_mix/{{ forloop.counter }}">
+                {% include 'appsaes/states/state_mix.html' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

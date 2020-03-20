@@ -1,0 +1,50 @@
+{% load tags %}
+{% load static %}
+<div class="ui grid row middle aligned">
+    <div class="ui seven wide column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+            <tr class="center aligned">
+                <th colspan="2">Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="center aligned">
+                <td data-label="linha00">{{ states.0.0 }}</td>
+                <td data-label="linha01">{{ states.0.1 }}</td>
+            </tr>
+            <tr class="center aligned">
+                <td data-label="linha10">{{ states.0.2 }}</td>
+                <td data-label="linha11">{{ states.0.3 }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% round_key_state word_array 0 as key_state %}
+
+    <div class="ui two wide column">
+        <img class="ui image tiny operator" src='{% static "img/exchange.svg" %}'
+             alt="operator"/>
+    </div>
+    <div class="ui seven wide column">
+        <table class="ui very basic celled collapsing table">
+            <thead>
+            <tr class="center aligned">
+                <th colspan="2">Estado Resultado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="center aligned">
+                <td data-label="linha00">{{ states.1.0 }}</td>
+                <td data-label="linha01">{{ states.1.1 }}</td>
+            </tr>
+            <tr class="center aligned">
+                <td data-label="linha10">{{ states.1.2 }}</td>
+                <td data-label="linha11">{{ states.1.3 }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="">
+{% load static %}
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Simplified AES</title>
+    <link rel="stylesheet" type="text/css" href='{% static "semantic/semantic.min.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "css/estilo.css" %}'>
+</head>
+<header>
+    <div class="ui inverted vertical segment">
+        <div class="ui inverted secondary pointing menu stackable">
+            <a class="active item" href="{% url 'home' %}">S-AES Web</a>
+            <a class="item right floated" href="{% url 'encrypt' %}"><i class="lock icon"></i> Criptografar</a>
+            <a class="item floated" href="{% url 'decrypt' %}"><i class="lock open icon"></i> Descriptografar</a>
+        </div>
+    </div>
+</header>
+<body>
+<article class="ui container">
+    {% block content %}
+    {% endblock %}
+</article>
+
+<footer class="ui black inverted vertical footer relaxed segment">
+    <div class="ui five column middle aligned centered inverted stackable grid">
+        <div class="two wide column"></div>
+        <div class="three wide column">
+            <div class="ui divided celled relaxed inverted">
+                <div class="item">
+                    <a href="https://github.com/lopeslarissa" target="_blank">
+                        <i class="ui github icon"></i>lopeslarissa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src='{% static "js/jquery.min.js" %}'></script>
+<script src='{% static "semantic/semantic.js" %}'></script>
+<script src='{% static "js/main.js" %}'></script>
+</body>
+</html>

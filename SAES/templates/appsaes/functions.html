@@ -1,0 +1,151 @@
+{% load static %}
+<aside class="sticky note">
+    <h4 class="ui header">Funções do S-AES</h4>
+    <div class="ui accordion">
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Expansão da chave
+        </div>
+        <div class="content">
+            <p class="transition">O algoritmo de expansão de chave utiliza como entrada uma
+                chave com 2 palavras e como saída gera um vetor linear de 6 palavras</p>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            <img class="ui image avatar" alt="operator" src='{% static "img/plus.svg" %}'/>
+            Adição de chave da rodada
+        </div>
+        <div class="content">
+            <p class="transition">Adição de chave é um XOR bit a bit entre a matriz estado
+                e a chave da rodada</p>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            <img class="ui image avatar" alt="operator" src='{% static "img/exchange.svg" %}'/>
+            Substituição de nibbles
+        </div>
+        <div class="content">
+            <p class="transition">Nesta função cada nibble é substituído por um novo
+                nibble através da caixa-S.</p>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            <img class="ui image avatar" alt="operator" src='{% static "img/bitwise.svg" %}'/>
+            Deslocamento de linhas
+        </div>
+        <div class="content">
+            <p class="transition">No deslocamento de linhas é realizado o deslocamento circular de um
+                nibble na segunda linha da matriz estado</p>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            <img class="ui image avatar" alt="operator" src='{% static "img/multiply.svg" %}'/>
+            Embaralhamento de colunas
+        </div>
+        <div class="content">
+            <p class="transition">Esta função atua sobre a matriz estado alterando cada nibble por
+                uma combinação linear de nibbles da mesma coluna</p>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Caixa - S (Criptografar)
+        </div>
+        <div class="content">
+            <table class="ui very basic celled collapsing black table">
+                <thead>
+                <tr class="center aligned">
+                    <th colspan="5">Caixa - S</th>
+                </tr>
+                <tr class="center aligned">
+                    <th></th>
+                    <th>00</th>
+                    <th>01</th>
+                    <th>10</th>
+                    <th>11</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <th>00</th>
+                    <td>1001</td>
+                    <td>0100</td>
+                    <td>1010</td>
+                    <td>1011</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>01</th>
+                    <td>1101</td>
+                    <td>0001</td>
+                    <td>1000</td>
+                    <td>0101</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>10</th>
+                    <td>0110</td>
+                    <td>0010</td>
+                    <td>0000</td>
+                    <td>0011</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>11</th>
+                    <td>1100</td>
+                    <td>1110</td>
+                    <td>1111</td>
+                    <td>0111</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Caixa - S Inversa (Descriptografar)
+        </div>
+        <div class="content">
+            <table class="ui very basic celled collapsing black table">
+                <thead>
+                <tr class="center aligned">
+                    <th colspan="5">Caixa - S Inverva</th>
+                </tr>
+                <tr class="center aligned">
+                    <th></th>
+                    <th>00</th>
+                    <th>01</th>
+                    <th>10</th>
+                    <th>11</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <th>00</th>
+                    <td>1010</td>
+                    <td>0101</td>
+                    <td>1001</td>
+                    <td>1011</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>01</th>
+                    <td>0001</td>
+                    <td>0111</td>
+                    <td>1000</td>
+                    <td>1111</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>10</th>
+                    <td>0110</td>
+                    <td>0000</td>
+                    <td>0010</td>
+                    <td>0011</td>
+                </tr>
+                <tr class="center aligned">
+                    <th>11</th>
+                    <td>1100</td>
+                    <td>0100</td>
+                    <td>1101</td>
+                    <td>1110</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aside>

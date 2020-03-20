@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+{% block content %}
+    <h2 class="ui header">Relatório de Descriptografia</h2>
+    <div class="ui stackable grid">
+        <div class="eleven wide column round">
+            <h4 class="ui header">Dados</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th>Chave</th>
+                    <th>Texto</th>
+                    <th>Texto Descriptografado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ key }}</td>
+                    <td>{{ cipher_text }}</td>
+                    <td>{{ plain_text }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="ui header">Expansão da Chave</h4>
+            {% bin_to_dec word_array as word_array_dec %}
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th colspan="6">Vetor de Palavras</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ word_array.0 }}</td>
+                    <td>{{ word_array.1 }}</td>
+                    <td>{{ word_array.2 }}</td>
+                    <td>{{ word_array.3 }}</td>
+                    <td>{{ word_array.4 }}</td>
+                    <td>{{ word_array.5 }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="ui header">Blocos</h4>
+            <div class="ui tab segment active" id="js-blocos" data-tab="state">
+                <div class="ui top attached tabular menu stackable">
+                    {% for state in state_array %}
+                        <a class="item{% if forloop.first %} active {% endif %}" data-tab="state/{{ forloop.counter }}">Bloco {{ forloop.counter }}</a>
+                    {% endfor %}
+                </div>
+                {% for state in state_array %}
+                    <div class="ui bottom attached tab segment{% if forloop.first %} active {% endif %}"
+                         data-tab="state/{{ forloop.counter }}">
+                        {% include 'appsaes/states/state.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% include 'appsaes/rounds/round_1.html' %}
+            {% include 'appsaes/rounds/round_2_decrypt.html' %}
+            {% include 'appsaes/rounds/round_3_decrypt.html' %}
+        </div>
+        <div class="five wide column">
+            {% include 'appsaes/functions.html' %}
+        </div>
+    </div>
+{% endblock %}

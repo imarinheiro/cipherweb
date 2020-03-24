@@ -9,7 +9,7 @@
 
 {% for field in form.visible_fields %}
     <div class="field {% if field.field.required %} required {% endif %}">
-        <label for="{{ field.id_for_label }}">{{ field.label|title }}: {% if field.field.required %}
+        <label for="{{ field.id_for_label }}">{{ field.label}}: {% if field.field.required %}
             <em class="ui tiny red icon asterisk"></em>{% endif %}
         </label>
 

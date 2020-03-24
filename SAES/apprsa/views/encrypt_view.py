@@ -14,13 +14,13 @@ class EncryptView(View):
     def post(self, request):
         form = EncryptForm(request.POST)
         if form.is_valid():
-            context = {}
+            is_text = form.cleaned_data.get('is_text', False)
             message = form.cleaned_data.get('message', '')
             first_key = form.cleaned_data.get('first_key', 0)
             second_key = form.cleaned_data.get('second_key', 0)
-            if message.isdigit():
-                context = set_context_encrypt_number(int(message), first_key, second_key)
-            if message.isalpha():
+            if is_text:
                 context = set_context_encrypt_string(message, first_key, second_key)
+            else:
+                context = set_context_encrypt_number(int(message), first_key, second_key)
             return render(request, 'apprsa/report_encrypt.html', context)
         return render(request, 'apprsa/form.html', {'form': form})

@@ -13,13 +13,13 @@ class DecryptView(View):
     def post(self, request):
         form = DecryptForm(request.POST)
         if form.is_valid():
-            context = {}
-            message = form.cleaned_data.get('message', '')
+            is_text = form.cleaned_data.get('is_text', False)
+            message = form.cleaned_data.get('message', 0)
             first_key = form.cleaned_data.get('first_key', 0)
             second_key = form.cleaned_data.get('second_key', 0)
-            if message.isdigit():
+            if is_text:
+                context = set_context_decrypt_string(int(message), first_key, second_key)
+            else:
                 context = set_context_decrypt_number(int(message), first_key, second_key)
-            if message.isalpha():
-                context = set_context_decrypt_string(message, first_key, second_key)
             return render(request, 'apprsa/report_decrypt.html', context)
         return render(request, 'apprsa/form.html', {'form': form})

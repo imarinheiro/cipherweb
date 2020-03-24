@@ -13,11 +13,21 @@
     <div class="ui inverted vertical segment">
         <div class="ui inverted secondary pointing menu stackable">
             <a class="active item" href="{% url 'home' %}">S-AES Web</a>
-            <a class="item right floated" href="{% url 'encrypt' %}"><em class="lock icon"></em> Criptografar</a>
-            <a class="item right floated" href="{% url 'decrypt' %}"><em class="lock open icon"></em> Descriptografar</a>
-            <a class="item right floated" href="{% url 'rsa-key' %}"><em class="key icon"></em> RSA Chave</a>
-            <a class="item right floated" href="{% url 'rsa-encrypt' %}"><em class="lock icon"></em> RSA Criptografar</a>
-            <a class="item right floated" href="{% url 'rsa-decrypt' %}"><em class="lock open icon"></em> RSA Descriptografar</a>
+            <div class="ui dropdown item">
+                S-AES <em class="dropdown icon"></em>
+                <div class="menu">
+                    <a class="item" href="{% url 'encrypt' %}">Criptografar</a>
+                    <a class="item" href="{% url 'decrypt' %}">Descriptografar</a>
+                </div>
+            </div>
+            <div class="ui dropdown item">
+                RSA <em class="dropdown icon"></em>
+                <div class="menu">
+                    <a class="item" href="{% url 'rsa-key' %}">Chave</a>
+                    <a class="item" href="{% url 'rsa-encrypt' %}">Criptografar</a>
+                    <a class="item" href="{% url 'rsa-decrypt' %}">Descriptografar</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -29,12 +39,16 @@
 
 <footer class="ui black inverted vertical footer relaxed segment">
     <div class="ui five column middle aligned centered inverted stackable grid">
-        <div class="two wide column"></div>
-        <div class="three wide column">
-            <div class="ui divided celled relaxed inverted">
+        <div class="three wide column center aligned">
+            <div class="ui divided celled relaxed inverted list">
                 <div class="item">
                     <a rel="noopener noreferrer" href="https://github.com/lopeslarissa" target="_blank">
-                        <em class="ui github icon"></em>lopeslarissa
+                        <i class="github icon"></i>lopeslarissa
+                    </a>
+                </div>
+                <div class="item">
+                    <a rel="noopener noreferrer" href="https://github.com/imarinheiro" target="_blank">
+                        <i class="github icon"></i>imarinheiro
                     </a>
                 </div>
             </div>

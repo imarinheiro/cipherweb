@@ -22,4 +22,8 @@ $(document).ready(function () {
             .transition('fade')
         ;
     });
+
+    $('.ui.dropdown.item').dropdown({
+        transition: 'drop'
+    });
 });

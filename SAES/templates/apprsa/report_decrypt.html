@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+{% block content %}
+    <h2 class="ui header">Relatório de Descriptografia</h2>
+    <div class="ui stackable grid">
+        <div class="eleven wide column">
+            <h4 class="ui header">Dados</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col">Texto Criptografado</th>
+                    <th scope="col">Texto Descriptografado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ encrypted_text }}</td>
+                    <td>{{ decrypted_text }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="ui header">Chave Privada</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col"><code>N</code></th>
+                    <th scope="col"><code>D</code></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ n }}</td>
+                    <td>{{ d }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="five wide column">
+            {% include 'apprsa/functions.html' %}
+        </div>
+    </div>
+{% endblock %}

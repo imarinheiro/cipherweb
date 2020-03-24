@@ -1,0 +1,39 @@
+{% load staticfiles %}
+{% load i18n %}
+
+
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+    <div class="field {% if field.field.required %} required {% endif %}">
+        <label for="{{ field.id_for_label }}">{{ field.label|title }}: {% if field.field.required %}
+            <em class="ui tiny red icon asterisk"></em>{% endif %}
+        </label>
+
+        {{ field }}
+        {% if field.help_text %}
+            <span class="ui pointing label">Ajuda: {{ field.help_text }}</span>
+        {% endif %}
+
+{#        <input id="text_id" type="text" name="message" placeholder="Texto"#}
+{#               title="No máximo 36 caracteres de 0-9">#}
+    </div>
+
+
+{#    <div class="field">#}
+{#        <label>{{ field.label|title }}: {% if field.field.required %}#}
+{#            <em class="ui tiny red icon asterisk"></em>{% endif %}#}
+{#        </label>#}
+{#        {{ field }}#}
+{#        {% if field.help_text %}#}
+{#            <span class="ui pointing label">Ajuda: {{ field.help_text }}</span>#}
+{#        {% endif %}#}
+{##}
+{#        {% if field.errors %}#}
+{#            <span class="ui pointing red label">{{ field.errors }}</span>#}
+{#        {% endif %}#}
+{#    </div>#}
+{% endfor %}

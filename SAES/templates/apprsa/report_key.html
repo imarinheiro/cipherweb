@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+{% block content %}
+    <h2 class="ui header">Relatório de Chaves</h2>
+    <div class="ui stackable grid">
+        <div class="eleven wide column">
+            <h4 class="ui header">Dados</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col">Número Primo (<code>P</code>)</th>
+                    <th scope="col">Número Primo (<code>Q</code>)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ p }}</td>
+                    <td>{{ q }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col"><code>N</code></th>
+                    <th scope="col"><code>Tocient</code></th>
+                    <th scope="col"><code>E</code></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ n }}</td>
+                    <td>{{ e }}</td>
+                    <td>{{ tocient }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="ui header">Chave Pública</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col"><code>N</code></th>
+                    <th scope="col"><code>E</code></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ n }}</td>
+                    <td>{{ e }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="ui header">Chave Privada</h4>
+            <table class="ui celled black table">
+                <thead>
+                <tr class="center aligned">
+                    <th scope="col"><code>N</code></th>
+                    <th scope="col"><code>D</code></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="center aligned">
+                    <td>{{ n }}</td>
+                    <td>{{ d }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="five wide column">
+            {% include 'apprsa/functions.html' %}
+        </div>
+    </div>
+{% endblock %}

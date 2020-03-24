@@ -13,8 +13,11 @@
     <div class="ui inverted vertical segment">
         <div class="ui inverted secondary pointing menu stackable">
             <a class="active item" href="{% url 'home' %}">S-AES Web</a>
-            <a class="item right floated" href="{% url 'encrypt' %}"><i class="lock icon"></i> Criptografar</a>
-            <a class="item floated" href="{% url 'decrypt' %}"><i class="lock open icon"></i> Descriptografar</a>
+            <a class="item right floated" href="{% url 'encrypt' %}"><em class="lock icon"></em> Criptografar</a>
+            <a class="item right floated" href="{% url 'decrypt' %}"><em class="lock open icon"></em> Descriptografar</a>
+            <a class="item right floated" href="{% url 'rsa-key' %}"><em class="key icon"></em> RSA Chave</a>
+            <a class="item right floated" href="{% url 'rsa-encrypt' %}"><em class="lock icon"></em> RSA Criptografar</a>
+            <a class="item right floated" href="{% url 'rsa-decrypt' %}"><em class="lock open icon"></em> RSA Descriptografar</a>
         </div>
     </div>
 </header>
@@ -30,8 +33,8 @@
         <div class="three wide column">
             <div class="ui divided celled relaxed inverted">
                 <div class="item">
-                    <a href="https://github.com/lopeslarissa" target="_blank">
-                        <i class="ui github icon"></i>lopeslarissa
+                    <a rel="noopener noreferrer" href="https://github.com/lopeslarissa" target="_blank">
+                        <em class="ui github icon"></em>lopeslarissa
                     </a>
                 </div>
             </div>

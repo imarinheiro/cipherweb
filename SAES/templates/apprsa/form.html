@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="ui three column centered grid">
+        <div class="column">
+            <h2 class="ui header center aligned">
+                {% if request.path == '/rsa/decrypt/' %}
+                    RSA Descriptografar
+                {% elif request.path == '/rsa/encrypt/' %}
+                    RSA Criptografar
+                {% else %}
+                    RSA Gerar Chaves
+                {% endif %}
+            </h2>
+            <div class="ui black segment">
+                <form class="ui form" action="" method="post">
+                    {% csrf_token %}
+                    {% include 'apprsa/includes/fields_errors.html' %}
+                    {% include 'apprsa/includes/fields.html' %}
+                    <div class="field">
+                        <button class="ui black basic button" type="submit">
+                            {% if request.path == '/rsa/decrypt/' %}
+                                Descriptografar
+                            {% elif request.path == '/rsa/encrypt/' %}
+                                Criptografar
+                            {% else %}
+                                Gerar Chaves
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

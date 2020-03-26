@@ -14,6 +14,7 @@ class EncryptForm(forms.Form):
         cleaned_data = super().clean()
         message = cleaned_data.get("message")
         first_key = cleaned_data.get("first_key")
+        is_text = cleaned_data.get("is_text")
 
         if message and first_key:
             msg = "A chave deve ser maior para criptografar a mensagem."
@@ -25,3 +26,8 @@ class EncryptForm(forms.Form):
             if result >= first_key:
                 self.add_error('message', msg)
                 self.add_error('first_key', msg)
+
+        if message.isalpha() and not is_text:
+            msg = "A sua mensagem é um texto, então você deve selecionar o campo Criptografia de Texto."
+            self.add_error('message', msg)
+            self.add_error('is_text', msg)

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load rsa_tags %}
+{% load rsa_tags mathfilters %}
 {% block content %}
     <h2 class="ui header">Relatório de Criptografia</h2>
     <div class="ui stackable grid">
@@ -42,6 +42,93 @@
                 </tr>
                 </tbody>
             </table>
+
+            <h4 class="ui header">Criptografar</h4>
+            <div class="ui black segment">
+                <div class="ui five column grid row middle center aligned">
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>M<sup>E</sup></code>
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>N</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            {% if is_text %}
+                                {% string_to_decimal_ascii plain_text as ascii_code %}
+                                <code>{{ ascii_code }}<sup>{{ e }}</sup></code>
+                            {% else %}
+                                <code>{{ plain_text }}<sup>{{ e }}</sup></code>
+                            {% endif %}
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>{{ n }}</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            {% if is_text %}
+                                {% string_to_decimal_ascii plain_text as ascii_code %}
+                                <code>{% pow ascii_code e %}</code>
+                            {% else %}
+                                <code>{% pow plain_text e %}</code>
+                            {% endif %}
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>{{ n }}</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            {% if is_text %}
+                                {% string_to_decimal_ascii plain_text as ascii_code %}
+                                {% pow ascii_code e as pow_result %}
+                                <code>{{ pow_result|mod:n }}</code>
+                            {% else %}
+                                {% pow plain_text e as pow_result %}
+                                <code>{{ pow_result|mod:n }}</code>
+                            {% endif %}
+                        </div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="five wide column">
             {% include 'apprsa/functions.html' %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load rsa_tags %}
+{% load rsa_tags mathfilters %}
 {% block content %}
     <h2 class="ui header">Relatório de Descriptografia</h2>
     <div class="ui stackable grid">
@@ -42,6 +42,83 @@
                 </tr>
                 </tbody>
             </table>
+
+
+            <h4 class="ui header">Descriptografar</h4>
+            <div class="ui black segment">
+                <div class="ui five column grid row middle center aligned">
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>M</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>C<sup>D</sup></code>
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>N</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>{{ encrypted_text }}<sup>{{ d }}</sup></code>
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>{{ n }}</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            {% pow encrypted_text d as pow_result%}
+                            {% if pow_result > 9999999999 %}
+                                <code>{{ pow_result|stringformat:".3e" }}</code>
+                            {% else %}
+                                <code>{{ pow_result }}</code>
+                            {% endif %}
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
+                            <code>{{ n }}</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>C</code>
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            {% pow encrypted_text d as pow_result %}
+                            <code>{{ pow_result|mod:n }}</code>
+                        </div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="five wide column">
             {% include 'apprsa/functions.html' %}

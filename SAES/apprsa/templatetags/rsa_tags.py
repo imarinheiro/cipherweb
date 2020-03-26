@@ -11,3 +11,8 @@ def generate_range(a, b):
 @register.simple_tag
 def string_to_decimal_ascii(char: str):
     return ord(char)
+
+
+@register.simple_tag
+def pow(a, b):
+    return a ** b

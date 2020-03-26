@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load tags %}
+{% load rsa_tags %}
 {% block content %}
     <h2 class="ui header">Relatório de Criptografia</h2>
     <div class="ui stackable grid">
@@ -10,12 +10,18 @@
                 <thead>
                 <tr class="center aligned">
                     <th scope="col">Texto Livre</th>
+                    {% if is_text %}
+                        <th scope="col">Código ASCII</th>
+                    {% endif %}
                     <th scope="col">Texto Criptografado</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="center aligned">
                     <td>{{ plain_text }}</td>
+                    {% if is_text %}
+                        <td>{% string_to_decimal_ascii plain_text %}</td>
+                    {% endif %}
                     <td>{{ encrypted_text }}</td>
                 </tr>
                 </tbody>

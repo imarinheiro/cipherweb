@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load tags %}
+{% load rsa_tags %}
 {% block content %}
     <h2 class="ui header">Relatório de Descriptografia</h2>
     <div class="ui stackable grid">
@@ -11,12 +11,18 @@
                 <tr class="center aligned">
                     <th scope="col">Texto Criptografado</th>
                     <th scope="col">Texto Descriptografado</th>
+                    {% if is_text %}
+                        <th scope="col">Código ASCII</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="center aligned">
                     <td>{{ encrypted_text }}</td>
                     <td>{{ decrypted_text }}</td>
+                    {% if is_text %}
+                        <td>{% string_to_decimal_ascii decrypted_text %}</td>
+                    {% endif %}
                 </tr>
                 </tbody>
             </table>

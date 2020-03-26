@@ -20,7 +20,9 @@ class EncryptView(View):
             second_key = form.cleaned_data.get('second_key', 0)
             if is_text:
                 context = set_context_encrypt_string(message, first_key, second_key)
+                context['is_text'] = is_text
             else:
                 context = set_context_encrypt_number(int(message), first_key, second_key)
+                context['is_text'] = is_text
             return render(request, 'apprsa/report_encrypt.html', context)
         return render(request, 'apprsa/form.html', {'form': form})

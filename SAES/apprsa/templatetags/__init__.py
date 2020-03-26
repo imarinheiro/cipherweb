@@ -1,1 +1,1 @@
-from apprsa.templatetags.tags import bin_to_dec
+from apprsa.templatetags.rsa_tags import generate_range

@@ -4,6 +4,5 @@ register = template.Library()
 
 
 @register.simple_tag
-def teste(array):
-    return None
-
+def generate_range(a, b):
+    return [x for x in range(2, min(a, b) + 1)]

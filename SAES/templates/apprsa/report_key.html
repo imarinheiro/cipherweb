@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load tags %}
+{% load rsa_tags mathfilters %}
 {% block content %}
     <h2 class="ui header">Relatório de Chaves</h2>
     <div class="ui stackable grid">
@@ -130,6 +130,59 @@
 
             <h4 class="ui header">Selecionar <code>E</code></h4>
             <div class="ui black segment">
+                <div class="ui seven column grid row middle center aligned">
+                    <div class="ui row middle aligned">
+                        <div class="column">
+                            <code>E</code> <code><strong>mod</strong></code> Fator
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/notequal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            0
+                        </div>
+                        <div class="column">
+                            <strong>&#38;</strong>
+                        </div>
+                        <div class="column">
+                            &#934; <code><strong>mod</strong></code> Fator
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/notequal.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            0
+                        </div>
+                    </div>
+
+                    {% generate_range e tocient as teste_e_list %}
+
+                    {% for element in teste_e_list %}
+                        <div class="ui row middle aligned">
+                            <div class="column">
+                                <code>{{ e }}</code> <code><strong>mod</strong></code> {{ element }}
+                            </div>
+                            <div class="column">
+                                <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                            </div>
+                            <div class="column">
+                                {{ e|mod:element }}
+                            </div>
+                            <div class="column">
+                                <strong>&#38;</strong>
+                            </div>
+                            <div class="column">
+                                {{ tocient }} <code><strong>mod</strong></code> {{ element }}
+                            </div>
+                            <div class="column">
+                                <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                            </div>
+                            <div class="column">
+                                {{ tocient|mod:element }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
 
             </div>
 
@@ -201,78 +254,92 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <h4 class="ui header">Calcular <code>D</code></h4>
             <div class="ui black segment">
-                <div class="ui five column grid row middle center aligned">
+                <div class="ui seven column grid row middle center aligned">
                     <div class="ui row middle aligned">
                         <div class="column">
-                            (<code>P</code> - 1)
+                            <code>E</code>
                         </div>
                         <div class="column">
                             <img class="ui centered image tiny operator" src='{% static "img/multiply.svg" %}' alt="operator"/>
                         </div>
                         <div class="column">
-                            (<code>Q</code> - 1)
+                            <code>D</code>
                         </div>
                         <div class="column">
-                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                            <code><strong>mod</strong></code>
                         </div>
                         <div class="column">
-                            {{ tocient }}
+                            &#934;
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/identical.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>1</code>
                         </div>
                     </div>
                     <div class="ui row middle aligned">
                         <div class="column">
-                            ({{ p }}- 1)
+                            <code>{{ e }}</code>
                         </div>
                         <div class="column">
                             <img class="ui centered image tiny operator" src='{% static "img/multiply.svg" %}' alt="operator"/>
                         </div>
                         <div class="column">
-                            ({{ q }} - 1)
+                            <code>{{ d }}</code>
                         </div>
                         <div class="column">
-                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
-                        </div>
-                        <div class="column">
-                            {{ tocient }}
-                        </div>
-                    </div>
-                    <div class="ui row middle aligned">
-                        <div class="column">
-                            {{ p|add:"-1" }}
-                        </div>
-                        <div class="column">
-                            <img class="ui centered image tiny operator" src='{% static "img/multiply.svg" %}' alt="operator"/>
-                        </div>
-                        <div class="column">
-                            {{ q|add:"-1" }}
-                        </div>
-                        <div class="column">
-                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                            <code><strong>mod</strong></code>
                         </div>
                         <div class="column">
                             {{ tocient }}
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/identical.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>1</code>
                         </div>
                     </div>
                     <div class="ui row middle aligned">
                         <div class="column"></div>
                         <div class="column"></div>
                         <div class="column">
+                            <code>{{ e|mul:d }}</code>
+                        </div>
+                        <div class="column">
+                            <code><strong>mod</strong></code>
+                        </div>
+                        <div class="column">
                             {{ tocient }}
                         </div>
                         <div class="column">
-                            <img class="ui centered image tiny operator" src='{% static "img/equal.svg" %}' alt="operator"/>
+                            <img class="ui centered image tiny operator" src='{% static "img/identical.svg" %}' alt="operator"/>
                         </div>
                         <div class="column">
-                            {{ tocient }}
+                            <code>1</code>
+                        </div>
+                    </div>
+                    <div class="ui row middle aligned">
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column">
+                            {{ e|mul:d|mod:tocient }}
+                        </div>
+                        <div class="column">
+                            <img class="ui centered image tiny operator" src='{% static "img/identical.svg" %}' alt="operator"/>
+                        </div>
+                        <div class="column">
+                            <code>1</code>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

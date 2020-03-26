@@ -7,56 +7,112 @@
             Calcular <code>N</code>
         </div>
         <div class="content">
-            <p class="transition">O algoritmo de expansão de chave utiliza como entrada uma
-                chave com 2 palavras e como saída gera um vetor linear de 6 palavras</p>
+            <p class="transition">O algoritmo de calcular N utiliza como entrada dois números primos (<code>P, Q</code>)
+                e gera como saída o resultado <code>N</code>. Esse resultado é utilizado como parte das chaves privada e
+                pública.
+                A fórmula para gerar a o <code>N</code> é:</p>
+            <p class="transition">
+                <code>N &#8316; P &#215; Q</code>
+            </p>
+        </div>
+        <div class="title">
+            <em class="dropdown icon"></em>
+            Calcular <code>Tociente</code> &#934;
+        </div>
+        <div class="content">
+            <p class="transition">O algoritmo para calcular o <code>Tociente de Euler</code> utiliza como entrada dois
+                números primos (<code>P, Q</code>).
+                Esse cálculo utiliza a seguinte fórmula:
+            </p>
+            <p class="transition">
+                &#934; <code>&#8316; (P - 1) &#215; (Q - 1)</code>
+            </p>
         </div>
         <div class="title">
             <em class="dropdown icon"></em>
             Selecionar <code>E</code>
         </div>
         <div class="content">
-            <p class="transition">Adição de chave é um XOR bit a bit entre a matriz estado
-                e a chave da rodada</p>
-        </div>
-        <div class="title">
-            <em class="dropdown icon"></em>
-            Calcular <code>Tocient</code>
-        </div>
-        <div class="content">
-            <p class="transition">Nesta função cada nibble é substituído por um novo
-                nibble através da caixa-S.</p>
+            <p class="transition">
+                O algoritmo para selecionar <code>E</code> utiliza como entrada o <code>Tocient</code> &#934;.
+                As condições para a seleção do número são:
+            </p>
+            <ol class="ui list transition">
+                <li class="item" value="-">Ser relativamente primo</li>
+                <li class="item" value="-">Ser maior ou igual a 3</li>
+                <li class="item" value="-">Ser menor que <code>Tocient</code> &#934;</li>
+            </ol>
+            <p class="transition">
+                Para que dois numeros sejam relativamente primos, eles não devem compartilhar fatores comuns,
+                ou seja, não deve existir um número inteiro (exceto 1) que divida ambos os números.
+            </p>
         </div>
         <div class="title">
             <em class="dropdown icon"></em>
             Calcular <code>D</code>
         </div>
         <div class="content">
-            <p class="transition">No deslocamento de linhas é realizado o deslocamento circular de um
-                nibble na segunda linha da matriz estado</p>
+            <p class="transition">O algoritmo para calcular <code>D</code> utiliza como entrada os parâmetros
+            <code>E</code> e <code>Tociente</code> &#934;. Esse cálculo obtem como saída o valor <code>D</code>, tal que:</p>
+            <p class="transition">
+                <code>(E &#215; D) mod</code> &#934;  &#8801;  <code>1</code>
+            </p>
+            <p class="transition">
+                O valor de <code>D</code> deve possuir o mesmo sinal de <code>Tociente</code> &#934;.
+                Pode-se dizer que <code>E e D</code> são inversos multiplicativos de <code>mod</code> &#934;, ou seja:
+            </p>
+            <p class="transition">
+                <code>E &#215; D</code> &#8801; <code>1 mod</code> &#934;
+            </p>
+            <p class="transition">
+                <code>D</code> &#8801; <code>E<sup>-1</sup> mod</code> &#934;
+            </p>
         </div>
         <div class="title">
             <em class="dropdown icon"></em>
             Transformar Texto Livre para Inteiro
         </div>
         <div class="content">
-            <p class="transition">No deslocamento de linhas é realizado o deslocamento circular de um
-                nibble na segunda linha da matriz estado</p>
+            <p class="transition">O algoritmo para criptografar texto utiliza a tabela ASCII
+                "American Standard Code for Information Interchange" para transformação do
+                caractere para o seu referente código em decimal.</p>
+            <p class="transition">
+                Para realizar uma busca do código referente basta acessar a página
+                <a href="https://www.w3schools.com/charsets/ref_html_ascii.asp">Mapa ASCII</a>
+                do W3Schools.
+            </p>
         </div>
         <div class="title">
             <em class="dropdown icon"></em>
             Criptografar
         </div>
         <div class="content">
-            <p class="transition">No deslocamento de linhas é realizado o deslocamento circular de um
-                nibble na segunda linha da matriz estado</p>
+            <p class="transition">
+                O algoritmo para criptografar utiliza 3 parâmetros como entrada: (<code>M, N e E</code>).
+                <code>M</code> é a Mensagem (texto livre ou o número) que deseja criptografar. Os parâmetros
+                <code>N e E</code> são partes calculada para a chave pública.
+                A saída é o texto criptografado denominado <code>C</code>.
+                A fórmula para realizar a criptografia é a seguinte:
+            </p>
+            <p class="transition">
+                <code>C &#8316; M<sup>E</sup> mod N</code>
+            </p>
         </div>
         <div class="title">
             <em class="dropdown icon"></em>
             Descriptografar
         </div>
         <div class="content">
-            <p class="transition">No deslocamento de linhas é realizado o deslocamento circular de um
-                nibble na segunda linha da matriz estado</p>
+            <p class="transition">
+                O algoritmo para descriptografar utiliza 3 parâmetros como entrada: (<code>C, N e D</code>).
+                <code>C</code> é a Mensagem Criptografada (texto ou número) que deseja descriptografar. Os parâmetros
+                <code>N e D</code> são partes calculada para a chave privada.
+                A saída é mensagem descriptografado denominado <code>M</code>.
+                A fórmula para realizar a descriptografia é a seguinte:
+            </p>
+            <p class="transition">
+                <code>M &#8316; C<sup>D</sup> mod N</code>
+            </p>
         </div>
     </div>
 </aside>

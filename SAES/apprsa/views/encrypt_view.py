@@ -7,11 +7,11 @@ from apprsa.forms.encrypt_form import EncryptForm
 
 class EncryptView(View):
 
-    def get(self, request):
-        form = EncryptForm
+    def get(self, request, **kwargs):
+        form = EncryptForm(initial=kwargs)
         return render(request, 'apprsa/form.html', {'form': form})
 
-    def post(self, request):
+    def post(self, request, **kwargs):
         form = EncryptForm(request.POST)
         if form.is_valid():
             is_text = form.cleaned_data.get('is_text', False)

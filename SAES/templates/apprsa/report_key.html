@@ -2,10 +2,10 @@
 {% load static %}
 {% load rsa_tags mathfilters %}
 {% block content %}
-    <h2 class="ui header">Relatório de Chaves</h2>
+    <h2 class="ui header inline">Relatório de Chaves</h2>
     <div class="ui stackable grid">
         <div class="eleven wide column">
-            <h4 class="ui header">Dados</h4>
+            <h4 class="ui header inline">Dados</h4>
             <table class="ui celled black table">
                 <thead>
                 <tr class="center aligned">
@@ -38,7 +38,8 @@
                 </tbody>
             </table>
 
-            <h4 class="ui header">Chave Pública</h4>
+            <h4 class="ui header inline">Chave Pública</h4>
+            <a class="ui mini secondary basic button right floated" href="{% url 'rsa-encrypt' n e %}">Criptografar</a>
             <table class="ui celled black table">
                 <thead>
                 <tr class="center aligned">
@@ -54,7 +55,8 @@
                 </tbody>
             </table>
 
-            <h4 class="ui header">Chave Privada</h4>
+            <h4 class="ui header inline">Chave Privada</h4>
+            <a class="ui mini secondary basic button right floated" href="{% url 'rsa-decrypt' n d %}">Descriptografar</a>
             <table class="ui celled black table">
                 <thead>
                 <tr class="center aligned">
@@ -70,7 +72,7 @@
                 </tbody>
             </table>
 
-            <h4 class="ui header">Calcular <code>N</code></h4>
+            <h4 class="ui header inline">Calcular <code>N</code></h4>
             <div class="ui black segment">
                 <div class="ui five column grid row middle center aligned">
                     <div class="ui row middle aligned">
@@ -128,7 +130,7 @@
                 </div>
             </div>
 
-            <h4 class="ui header">Selecionar <code>E</code></h4>
+            <h4 class="ui header inline">Selecionar <code>E</code></h4>
             <div class="ui black segment">
                 <div class="ui seven column grid row middle center aligned">
                     <div class="ui row middle aligned">
@@ -186,7 +188,7 @@
 
             </div>
 
-            <h4 class="ui header">Calcular <code>Tociente</code> &#934;</h4>
+            <h4 class="ui header inline">Calcular <code>Tociente</code> &#934;</h4>
             <div class="ui black segment">
                 <div class="ui five column grid row middle center aligned">
                     <div class="ui row middle aligned">
@@ -256,7 +258,7 @@
                 </div>
             </div>
 
-            <h4 class="ui header">Calcular <code>D</code></h4>
+            <h4 class="ui header inline">Calcular <code>D</code></h4>
             <div class="ui black segment">
                 <div class="ui seven column grid row middle center aligned">
                     <div class="ui row middle aligned">

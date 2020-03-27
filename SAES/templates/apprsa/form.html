@@ -4,11 +4,11 @@
     <div class="ui three column centered grid">
         <div class="column">
             <h2 class="ui header center aligned">
-                {% if request.path == '/rsa/decrypt/' %}
+                {% if '/rsa/decrypt/' in request.path %}
                     RSA Descriptografar
-                {% elif request.path == '/rsa/encrypt/' %}
+                {% elif '/rsa/encrypt/' in request.path %}
                     RSA Criptografar
-                {% else %}
+                {% elif  '/rsa/key/' in request.path %}
                     RSA Gerar Chaves
                 {% endif %}
             </h2>
@@ -19,11 +19,11 @@
                     {% include 'apprsa/includes/fields.html' %}
                     <div class="field">
                         <button class="ui black basic button" type="submit">
-                            {% if request.path == '/rsa/decrypt/' %}
+                            {% if '/rsa/decrypt/' in request.path %}
                                 Descriptografar
-                            {% elif request.path == '/rsa/encrypt/' %}
+                            {% elif '/rsa/encrypt/' in request.path %}
                                 Criptografar
-                            {% else %}
+                            {% elif  '/rsa/key/' in request.path %}
                                 Gerar Chaves
                             {% endif %}
                         </button>

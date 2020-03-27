@@ -6,11 +6,11 @@ from apprsa.forms.decrypt_form import DecryptForm
 
 class DecryptView(View):
 
-    def get(self, request):
-        form = DecryptForm
+    def get(self, request, **kwargs):
+        form = DecryptForm(initial=kwargs)
         return render(request, 'apprsa/form.html', {'form': form})
 
-    def post(self, request):
+    def post(self, request, **kwargs):
         form = DecryptForm(request.POST)
         if form.is_valid():
             is_text = form.cleaned_data.get('is_text', False)

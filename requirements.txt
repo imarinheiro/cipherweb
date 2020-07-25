@@ -1,4 +1,11 @@
 Django==2.2.2
+django-mathfilters==1.0.0
+mpmath==1.1.0
+msgpack-python==0.5.6
+numpy==1.16.3
+pyfinite==1.7
 pytz==2019.1
-sqlparse==0.3.0
+rsa-core==1.0.0
 saeslib==1.0.0
+sqlparse==0.3.0
+sympy==1.5.1

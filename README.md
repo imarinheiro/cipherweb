@@ -1,10 +1,14 @@
 # S-AES Web #
 ***
 
-## Instalação ##
+## Pré-requisitos ##
 
-Esta aplicação tem como pré-requisito a biblioteca [saeslib](https://github.com/lopeslarissa/saeslib)
-Esta aplicação tem como pré-requisito a biblioteca [rsa_core]()
+Esta aplicação tem como pré-requisito as bibliotecas:
+
+* [saeslib](https://github.com/lopeslarissa/saeslib)
+* [rsa_core](https://github.com/imarinheiro/rsa_core)
+
+## Instalação ##
 
 * ``` pip install -r requirements.txt ```
 * ``` python manage.py migrate ```
